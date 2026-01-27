@@ -53,8 +53,7 @@ export const initiateAdmin = async (
     const count = await User.countDocuments({});
     if (count > 0) {
       res.status(400).json({
-        message: `Can only have 1 admin user. If you want to create new admin user, 
-            please delete current admin user manually from database`,
+        message: `Can only have 1 admin user. If you want to create new admin user, please delete current admin user manually from database`,
       });
       return;
     }

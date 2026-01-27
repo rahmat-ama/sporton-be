@@ -11,7 +11,7 @@ Mongoose.connect(MONGO_URI)
   .then(() => {
     console.log("Connected to MongoDB");
     App.listen(PORT, () => {
-      console.log("Server is running on Port" + PORT);
+      console.log("Server is running on Port : " + PORT);
     });
   })
   .catch((error) => {

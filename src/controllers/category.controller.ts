@@ -1,6 +1,18 @@
 import { Request, Response } from "express";
 import Category from "../models/category.model";
 
+export const getCategories = async (
+  req: Request,
+  res: Response,
+): Promise<void> => {
+  try {
+    const categories = await Category.find().sort({ createdAt: -1 });
+    res.status(200).json(categories);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching Categories", error });
+  }
+};
+
 export const createCategory = async (
   req: Request,
   res: Response,
@@ -18,18 +30,6 @@ export const createCategory = async (
     res.status(201).json(category);
   } catch (error) {
     res.status(500).json({ message: "Error creating Category", error });
-  }
-};
-
-export const getCategories = async (
-  req: Request,
-  res: Response,
-): Promise<void> => {
-  try {
-    const categories = await Category.find().sort({ createdAt: -1 });
-    res.status(200).json(categories);
-  } catch (error) {
-    res.status(500).json({ message: "Error fetching Categories", error });
   }
 };
 

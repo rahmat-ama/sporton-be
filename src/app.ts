@@ -4,6 +4,7 @@ import authRoutes from "./routes/auth.routes";
 import { authenticate } from "./middleware/auth.middleware";
 import path from "path";
 import categoryRoutes from "./routes/category.routes";
+import productRoutes from "./routes/product.routes";
 
 const App = Express();
 App.use(Cors());
@@ -15,7 +16,8 @@ App.use("/uploads", Express.static(path.join(__dirname, "../uploads")));
 
 App.use("/api/auth", authRoutes);
 
-App.use("/app/categories", categoryRoutes);
+App.use("/api/categories", categoryRoutes);
+App.use("/api/products", productRoutes);
 
 App.get("/", (req, res) => {
   res.send("sporton backend API is running");

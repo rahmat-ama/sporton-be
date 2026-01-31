@@ -65,9 +65,13 @@ export const updateProduct = async (
       productData.imageUrl = req.file.path;
     }
 
-    const product = Product.findByIdAndUpdate(req.params.id, productData, {
-      new: true,
-    }).populate("category");
+    const product = await Product.findByIdAndUpdate(
+      req.params.id,
+      productData,
+      {
+        new: true,
+      },
+    ).populate("category");
 
     if (!product) {
       res.status(404).json({ message: "Product not found" });

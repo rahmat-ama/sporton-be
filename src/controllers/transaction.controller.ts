@@ -13,7 +13,7 @@ export const getTransactions = async (
 
     res.status(200).json(transactions);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching transactions" });
+    res.status(500).json({ message: "Error fetching transactions", error });
   }
 };
 
@@ -50,7 +50,7 @@ export const createTransacion = async (
 
     res.status(201).json(transaction);
   } catch (error) {
-    res.status(500).json({ message: "Error creating transaction" });
+    res.status(500).json({ message: "Error creating transaction", error });
   }
 };
 
@@ -70,7 +70,7 @@ export const getTransactionById = async (
 
     res.status(200).json(transaction);
   } catch (error) {
-    res.status(500).json({ message: "Error fetching transaction" });
+    res.status(500).json({ message: "Error fetching transaction", error });
   }
 };
 
@@ -104,6 +104,8 @@ export const updateTransaction = async (
 
     res.status(200).json(transaction);
   } catch (error) {
-    res.status(500).json({ message: "Error updating transaction status" });
+    res
+      .status(500)
+      .json({ message: "Error updating transaction status", error });
   }
 };

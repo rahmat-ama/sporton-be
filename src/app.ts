@@ -6,6 +6,7 @@ import path from "path";
 import categoryRoutes from "./routes/category.routes";
 import productRoutes from "./routes/product.routes";
 import bankRoutes from "./routes/bank.routes";
+import transactionRoutes from "./routes/transaction.routes";
 
 const App = Express();
 App.use(Cors());
@@ -20,6 +21,7 @@ App.use("/api/auth", authRoutes);
 App.use("/api/categories", categoryRoutes);
 App.use("/api/products", productRoutes);
 App.use("/api/banks", bankRoutes);
+App.use("/api/transactions", transactionRoutes);
 
 App.get("/", (req, res) => {
   res.send("sporton backend API is running");
